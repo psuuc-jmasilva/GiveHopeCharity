@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password</title>
+    <link rel="stylesheet" href="resetpwstyle.css">
+</head>
+<body>
+    <section>
+        <header>
+            <div class="logo">
+                <img src="GiveHopeLogo1.png" alt="ghlogo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#About">About</a></li>
+                    <li><a href="#">Donations</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#Contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="wrapper">
+            <span class="icon-back"><ion-icon name="arrow-back"></ion-icon></span>
+            <div class="container">
+                <div class="title-section">
+                    <h2>Reset Password</h2>
+                    <p class="para">Please Enter New Password.</p>
+                </div>
+
+                <form action="reset_password.php" class="form" method="post">
+                    <div class="input-group">
+                        <input type="password" name="new_password" required>
+                        <label>Enter New Password</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" name="confirm_password" required>
+                        <label>Confirm Password</label>
+                    </div>
+                    <button class="submit-btn" type="submit">Reset Password</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+
+</body>
+</html>
+<script>
+    const resetPasswordForm = document.getElementById("reset-password-form");
+    const resetPasswordBtn = document.getElementById("reset-password-btn");
+
+    resetPasswordBtn.addEventListener("click", function() {
+        const newPassword = resetPasswordForm.new_password.value;
+        const confirmPassword = resetPasswordForm.confirm_password.value;
+
+        if (newPassword === confirmPassword) {
+            localStorage.setItem("newPassword", newPassword);
+            alert("Password reset successful.");
+            resetPasswordForm.reset();
+        } else {
+            alert("Passwords do not match. Please try again.");
+        }
+    });
+</script>
